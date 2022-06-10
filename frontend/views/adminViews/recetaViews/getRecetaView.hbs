@@ -1,0 +1,77 @@
+<div class="container">
+    <div class="row">
+        {{#each recetas}}
+        <div class="col-md-4">
+            <div class="card mt-3">
+                <div class="card-header">
+                    <i class="fas fa-pencil-alt"></i> Receta Id#{{Id_Receta}}
+                </div>
+                <div class="card-body">
+                    {{#if ../idDoc}}
+                    <h4>Paciente: {{Nombre}}</h4>
+                    {{else if ../idPac}}
+                    <h4>Doctor: {{nombre}}</h4>
+                    {{else}}
+                    <h4>Doctor: {{nombre}}</h4>
+                    <h4>Paciente: {{Nombre}}</h4>
+                    {{/if}}
+                    <hr>
+                    <h5>Detalles: {{Descripcion}}</h5>
+                    <hr>
+                    <div style="display: flex;">
+                        {{#if ../idDoc}}
+                        <form action="/doctor/deleteReceta/{{Id_Receta}}/{{../idDoc}}" method="POST"
+                            style="width: 95%;">
+                            <button type="submit" class="btn btn-danger" style="width: 95%;">Eliminar</button>
+                        </form>
+                        <form action="/doctor/updateReceta/{{Id_Receta}}/{{../idDoc}}" method="GET"
+                            style="text-align: right; width: 95%;">
+                            <button type="submit" class="btn btn-warning" style="width: 95%;">Editar</button>
+                        </form>
+                        {{else if ../idPac}}
+
+                        {{else}}
+                        <form action="/admin/deleteReceta/{{Id_Receta}}" method="POST" style="width: 95%;">
+                            <button type="submit" class="btn btn-danger" style="width: 95%;">Eliminar</button>
+                        </form>
+                        <form action="/admin/updateReceta/{{Id_Receta}}" method="GET"
+                            style="text-align: right; width: 95%;">
+                            <button type="submit" class="btn btn-warning" style="width: 95%;">Editar</button>
+                        </form>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{else}}
+        <div class="card mt-5">
+            <div class="card-body">
+                <div class="row">
+                    {{#if idDoc}}
+                    <div class="col-md-9">
+                        <h1 class="card-title"><i class="fas fa-pencil-alt"></i> No hay recetas</h1>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="/doctor/addReceta/{{idDoc}}" class="btn btn-lg btn-success" style="width: 100%;">Añadir
+                            nueva receta</a>
+                    </div>
+                    {{else if idPac}}
+                    <div class="col-md-12">
+                        <h1 class="card-title" style="text-align: center;"><i class="far fa-calendar-check"></i> No hay
+                            recetas añadidas por su doctor</h1>
+                    </div>
+                    {{else}}
+                    <div class="col-md-9">
+                        <h1 class="card-title"><i class="fas fa-pencil-alt"></i> No hay recetas</h1>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="/admin/addReceta" class="btn btn-lg btn-success" style="width: 100%;">Añadir nueva
+                            receta</a>
+                    </div>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>

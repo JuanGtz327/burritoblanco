@@ -1,0 +1,76 @@
+<div class="card mt-5 mx-auto" style="max-width: 1250px;">
+    <div class="card-header bg-dark">
+            <h2 style="color: white;">Informacion Perfil</h2>
+    </div>
+    <div class="row">
+        <div class="col-md-4" style="padding: 50px;">
+            <img src="https://www.w3schools.com/w3css/img_avatar3.png" class="img-fluid rounded">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <p>Hola doctor, en este apartado usted puede modificar la informacion de su cuenta.
+                </p>
+                <form action="/doctor/updatePerfil/{{Id_Doctor}}" method="POST">
+                    <div class="row mb-3">
+                        <div class="col-sm-4">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="a">Nombre</span>
+                                <input type="text" class="form-control" name="Nombre" value="{{Nombre}}">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="a">ApellidoP</span>
+                                <input type="text" class="form-control" name="ApellidoP" value="{{ApellidoP}}">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="a">ApellidoM</span>
+                                <input type="text" class="form-control" name="ApellidoM" value="{{ApellidoM}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-8">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="a">Especialidad</span>
+                                <input type="text" class="form-control" name="Especialidad" value="{{Especialidad}}">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="a">Consultorio</span>
+                                <input type="number" class="form-control" name="Consultorio" value="{{Consultorio}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="a">Correo</span>
+                            <input type="email" class="form-control" name="Correo" value="{{Correo}}" pattern="[a-zA-Z0-9!#$%&'*_+-]([\.]?[a-zA-Z0-9!#$%&'*_+-])+@[a-zA-Z0-9]([^@&%$\/()=?¿!.,:;]|\d)+[a-zA-Z0-9][\.][a-zA-Z]{2,4}([\.][a-zA-Z]{2})?">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-6">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="a">Antigua Contraseña</span>
+                                <input type="password" class="form-control" name="pass" maxlength="30" autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Mayusculas, Numeros, Longitud 8 caracteres">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="a">Nueva Contraseña</span>
+                                <input type="password" class="form-control" name="pass2" maxlength="30" autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Mayusculas, Numeros, Longitud 8 caracteres">
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: flex;">
+                        <button type="submit" class="btn btn-primary" style="width: 49%;">Actualizar Informacion</button>
+                        <a class="btn btn-warning" style="width: 49%; margin-left: auto;" href="/doctor/{{Id_Doctor}}">Panel Principal</a>
+                    </div>  
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="container" style="margin-top: 50px; border-radius: 15px; background-color: #e9ecef;">
+    <div class="card-body" style="padding: 50px;">
+        <h1 class="display-4">Bienvenido {{Nombre}}!</h1>
+        <p class="lead">Esta es su cuenta asignada por su doctor, aqui podra consultar su estado clinico.</p>
+        <hr class="my-4">
+        <a class="btn btn-primary btn-lg" href="/paciente/getCitas/{{Id_Paciente}}">Consultar Citas</a>
+        <a class="btn btn-warning btn-lg" href="/paciente/getRecetas/{{Id_Paciente}}">Consultar Recetas</a>
+        <a class="btn btn-success btn-lg" href="/paciente/perfil/{{Id_Paciente}}">Mi Perfil</a>
+        <a class="btn btn-danger btn-lg" href="/logout">Cerrar Sesion</a>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="container-fluid">
+    <div class="card col-md-12 mt-5">
+        <div class="table-responsive-lg">
+            {{>headDashboard doc=true}}
+            <div class="card-body">
+                <table class="table table-secondary table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">Id_Doctor</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">ApellidoP</th>
+                            <th scope="col">ApellidoM</th>
+                            <th scope="col">Especialidad</th>
+                            <th scope="col">Consultorio</th>
+                            <th scope="col">Correo</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each doctors}}
+                        <tr>
+                            <th scope="row">{{Id_Doctor}}</th>
+                            <th>{{Nombre}}</th>
+                            <th>{{ApellidoP}}</th>
+                            <th>{{ApellidoM}}</th>
+                            <th>{{Especialidad}}</th>
+                            <th>{{Consultorio}}</th>
+                            <th>{{Correo}}</th>
+                            <th>
+                                <form action="/admin/deleteDoctor/{{Id_Doctor}}" method="post"><button
+                                        class="btn btn-outline-danger" type="submit">Eliminar</button></form>
+                            </th>
+                            <th>
+                                <form action="/admin/updateDoctor/{{Id_Doctor}}"><button class="btn btn-outline-info"
+                                        type="submit">Editar</button></form>
+                            </th>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

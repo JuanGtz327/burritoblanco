@@ -1,0 +1,35 @@
+<div class="container-fluid">
+    <div class="card col-md-12 mt-5">
+        <div class="table-responsive-lg">
+            {{>headDashboard hab=true}}
+            <div class="card-body">
+                <table class="table table-secondary table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">Id_Habitacion</th>
+                            <th scope="col">Habitacion</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each habitaciones}}
+                        <tr>
+                            <th scope="row">{{Id_Habitacion}}</th>
+                            <th>{{Habitacion}}</th>
+                            <th>
+                                <form action="/admin/deleteHabitacion/{{Id_Habitacion}}" method="post"><button
+                                        class="btn btn-outline-danger" type="submit">Eliminar</button></form>
+                            </th>
+                            <th>
+                                <form action="/admin/updateHabitacion/{{Id_Habitacion}}"><button
+                                        class="btn btn-outline-info" type="submit">Editar</button></form>
+                            </th>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

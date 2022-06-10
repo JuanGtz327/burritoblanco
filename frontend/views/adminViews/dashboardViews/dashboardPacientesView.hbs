@@ -1,0 +1,51 @@
+<div class="container-fluid">
+    <div class="card col-md-12 mt-5">
+        <div class="table-responsive-lg">
+            {{>headDashboard pac=true}}
+            <div class="card-body">
+                <table class="table table-secondary table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">Id_Paciente</th>
+                            <th scope="col">Id_Doctor</th>
+                            <th scope="col">Id_Habitacion</th>
+                            <th scope="col">Edad</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">ApellidoP</th>
+                            <th scope="col">ApellidoM</th>
+                            <th scope="col">Genero</th>
+                            <th scope="col">Correo</th>
+                            <th scope="col">Domicilio</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each pacientes}}
+                        <tr>
+                            <th scope="row">{{Id_Paciente}}</th>
+                            <th>{{Id_Doctor}}</th>
+                            <th>{{Id_Habitacion}}</th>
+                            <th>{{Edad}}</th>
+                            <th>{{Nombre}}</th>
+                            <th>{{ApellidoP}}</th>
+                            <th>{{ApellidoM}}</th>
+                            <th>{{Genero}}</th>
+                            <th>{{Correo}}</th>
+                            <th>{{Domicilio}}</th>
+                            <th>
+                                <form action="/admin/deletePaciente/{{Id_Paciente}}" method="post"><button
+                                        class="btn btn-outline-danger" type="submit">Eliminar</button></form>
+                            </th>
+                            <th>
+                                <form action="/admin/updatePaciente/{{Id_Paciente}}"><button
+                                        class="btn btn-outline-info" type="submit">Editar</button></form>
+                            </th>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,100 @@
+<div class="card mt-5 mx-auto" style="max-width: 1250px;">
+    <div class="card-header bg-dark">
+            <h2 style="color: white;">Informacion Perfil</h2>
+    </div>
+    <div class="row">
+        <div class="col-md-4" style="padding: 50px;">
+            <img src="https://www.w3schools.com/w3css/img_avatar2.png" class="img-fluid rounded" >
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <form action="/paciente/updatePerfil/{{paciente.Id_Paciente}}" method="POST">
+                    <div class="row mb-3">
+                        <div class="col-sm-4">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="a">Nombre</span>
+                                <input type="text" class="form-control" name="Nombre" value="{{paciente.Nombre}}">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="a">ApellidoP</span>
+                                <input type="text" class="form-control" name="ApellidoP" value="{{paciente.ApellidoP}}">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="a">ApellidoM</span>
+                                <input type="text" class="form-control" name="ApellidoM" value="{{paciente.ApellidoM}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-4">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="a">Doctor</span>
+                                <input type="text" class="form-control" disabled value="{{doctor.Nombre}}">
+                                <input type="hidden" name="idDoc" value="{{paciente.Id_Doctor}}">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="a">Habitacion</span>
+                                <input type="text" class="form-control" disabled value="{{habitacion.Habitacion}} ">
+                                <input type="hidden" name="idHab" value="{{paciente.Id_Habitacion}}">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="a">Edad</span>
+                                <input type="text" class="form-control" name="Edad" value="{{paciente.Edad}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-8">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="a">Correo</span>
+                                <input type="text" class="form-control" name="Correo" value="{{paciente.Correo}}" pattern="[a-zA-Z0-9!#$%&'*_+-]([\.]?[a-zA-Z0-9!#$%&'*_+-])+@[a-zA-Z0-9]([^@&%$\/()=?¿!.,:;]|\d)+[a-zA-Z0-9][\.][a-zA-Z]{2,4}([\.][a-zA-Z]{2})?">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="a">Genero</span>
+                                <select class="form-select" name="Genero">
+                                    <option value="{{paciente.Genero}}" selected>{{paciente.Genero}}</option>
+                                    <option value="Masculino">Masculino</option>
+                                    <option value="Femenino">Femenino</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Domicilio</span>
+                            <textarea class="form-control" name="Domicilio">{{paciente.Domicilio}}</textarea>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-6">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="a">Antigua Contraseña</span>
+                                <input type="password" class="form-control" name="pass" maxlength="30" autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Mayusculas, Numeros, Longitud 8 caracteres">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="a">Nueva Contraseña</span>
+                                <input type="password" class="form-control" name="pass2" maxlength="30" autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Mayusculas, Numeros, Longitud 8 caracteres">
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: flex;">
+                        <button type="submit" class="btn btn-primary" style="width: 49%;">Actualizar Informacion</button>
+                        <a class="btn btn-warning" style="width: 49%; margin-left: auto;" href="/paciente/{{paciente.Id_Paciente}}">Panel Principal</a>
+                    </div>  
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

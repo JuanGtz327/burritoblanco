@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="col-md-5 mx-auto mt-5">
+    <div class="card">
+      <div class="card-header text-center bg-dark">
+        <h3 style="color: white;">Registrar Doctor</h3>
+      </div>
+      <div class="card-body">
+        <form action="/admin/addDoctor" method="POST">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" name="Nombre" value="{{Nombre}}" required maxlength="20" autocomplete="off" pattern="[A-Za-z ]+">
+            <label>Nombre</label>
+          </div>
+          <div class="row g-2 mb-3">
+            <div class="col-md">
+                <div class="form-floating">
+                    <input type="text" class="form-control" name="ApellidoP" value="{{ApellidoP}}" required maxlength="20" autocomplete="off" pattern="[A-Za-z ]+">
+                    <label>Apellido Paterno</label>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="form-floating">
+                    <input type="text" class="form-control" name="ApellidoM" value="{{ApellidoM}}" required maxlength="20" autocomplete="off" pattern="[A-Za-z ]+">
+                    <label>Apellido Materno</label>
+                </div>
+            </div>
+          </div>
+          <div class="row g-2 mb-3">
+            <div class="col-md-4">
+              <div class="form-floating">
+                <input type="number" class="form-control"name="Consultorio" value="{{Consultorio}}" min="1" max="999">
+                <label>Consultorio</label>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="form-floating">
+                  <input type="text" class="form-control" name="Especialidad" value="{{Especialidad}}" required maxlength="40" autocomplete="off" pattern="[A-Za-z ]+">
+                <label>Especialidad</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control"name="Correo" value="{{Correo}}" required maxlength="50" pattern="[a-zA-Z0-9!#$%&'*_+-]([\.]?[a-zA-Z0-9!#$%&'*_+-])+@[a-zA-Z0-9]([^@&%$\/()=?¿!.,:;]|\d)+[a-zA-Z0-9][\.][a-zA-Z]{2,4}([\.][a-zA-Z]{2})?">
+            <label>Correo</label>
+          </div>
+          <div class="row g-2 mb-3">
+            <div class="col-md">
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" name="Password" required maxlength="30" autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Mayusculas, Numeros, Longitud 8 caracteres">
+                    <label>Contraseña</label>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" name="Password2" required maxlength="30" autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Mayusculas, Numeros, Longitud 8 caracteres">
+                    <label>Repetir Contraseña</label>
+                </div>
+            </div>
+          </div><div class="d-grid">
+            <button class="btn btn-info" type="submit">Añadir Doctor</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row">
+        {{#each habitaciones}}
+        <div class="col-md-4">
+            <div class="card mt-3">
+                <div class="card-header">
+                    <i class="fas fa-hospital"></i> Habitacion Id#{{Id_Habitacion}}
+                </div>
+                <div class="card-body">
+                    <h4>Esta es la habitacion {{Habitacion}}.</h4><hr>
+                    <div style="display: flex;">
+                        <form action="/admin/deleteHabitacion/{{Id_Habitacion}}" method="POST" style="width: 50%;">
+                            <button type="submit" class="btn btn-danger" style="width: 95%;">Eliminar</button>
+                        </form>
+                        <form action="/admin/updateHabitacion/{{Id_Habitacion}}" method="GET"
+                            style="text-align: right; width: 50%;">
+                            <button type="submit" class="btn btn-warning" style="width: 95%;">Editar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{else}}
+        <div class="card mt-5">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-9">
+                        <h1 class="card-title"><i class="fas fa-hospital"></i> No hay habitaciones</h1>
+                    </div>
+                    <div class="col-md-3">
+                         <a href="/admin/addHabitacion" class="btn btn-lg btn-success" style="width: 100%;">Añadir nueva
+                            habitacion</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>

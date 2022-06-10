@@ -1,0 +1,69 @@
+<div class="container">
+    <div class="row">
+        {{#each pacientes}}
+        <div class="col-md-4">
+            <div class="card mt-3">
+                <div class="card-header">
+                    <i class="fas fa-user"></i> Paciente {{Nombre}}
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title"> {{Nombre}} {{ApellidoP}} {{ApellidoM}}</h4>
+                    <hr>
+                    <h5>Edad: {{Edad}} años</h5>
+                    <h5>Correo: {{Correo}}</h5>
+                    <h6>Domicilio: {{Domicilio}}.</h6>
+                    <hr>
+                    <p class="card-text">
+                        {{#if ../idDoc}}
+                        {{else if ../idPac}}
+                        {{else}}
+                            <h5>Doctor: {{nombre}}</h5>
+                            <h5>Habitacion: {{Habitacion}}</h5>
+                        {{/if}}
+                    </p>
+                    <hr>
+                    <div style="display: flex;">
+                        {{#if ../idDoc}}
+                        <form action="/doctor/deletePaciente/{{Id_Paciente}}/{{../idDoc}}" method="POST">
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                        </form>
+                        <form action="/doctor/updatePaciente/{{Id_Paciente}}/{{../idDoc}}" method="GET">
+                            <button type="submit" class="btn btn-warning" style="margin-left: 15px;">Editar</button>
+                        </form>
+                        {{else}}
+                        <form action="/admin/deletePaciente/{{Id_Paciente}}" method="POST">
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                        </form>
+                        <form action="/admin/updatePaciente/{{Id_Paciente}}" method="GET">
+                            <button type="submit" class="btn btn-warning" style="margin-left: 15px;">Editar</button>
+                        </form>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{else}}
+        <div class="card mt-5">
+            <div class="card-body">
+                <div class="row">
+                    {{#if idDoc}}
+                        <div class="col-md-9">
+                            <h1 class="card-title"><i class="fas fa-user"></i> No hay pacientes registrados</h1>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="/doctor/addPaciente/{{idDoc}}" class="btn btn-lg btn-success" style="width: 100%;">Añadir nuevo paciente</a>
+                        </div>
+                    {{else}}
+                        <div class="col-md-9">
+                            <h1 class="card-title"><i class="fas fa-user"></i> No hay pacientes registrados</h1>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="/admin/addPaciente" class="btn btn-lg btn-success" style="width: 100%;">Añadir nuevo paciente</a>
+                        </div>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>

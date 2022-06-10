@@ -1,0 +1,107 @@
+<!-- Navegación Inicio -->
+<nav class="navbar navbar-expand-lg bg-dark navbar-light sticky-top p-0 wow fadeIn">
+  <a href="/" class="navbar-brand d-flex align-items-center px-4 px-lg-5" style="margin-left: auto; margin-right: auto;">
+    <h1 class="m-0 " style="color: white;"><i class="far fa-hospital me-3"></i>Hospital Burrito Blanco</h1>
+  </a>
+  <button type="button" class="navbar-toggler mb-3" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" style="background-color: white; margin-left: 20px; width: 90%;">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse px-3 px-lg-4" id="navbarCollapse">
+    <div class="navbar-nav ms-auto p-4 p-lg-0">
+      <a href="/" class="nav-item nav-link active" style="color: white; text-decoration: underline; text-align: center;">Inicio</a>
+      {{#if user}}
+      <div class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="color: white;">Citas</a>
+        <div class="dropdown-menu rounded-0 rounded-bottom m-0" style="background-color: #e9ecef;">
+          {{#if user.Id_Administrador}}
+          <a href="/admin/getCitas" class="dropdown-item">Lista Cita</a>
+          <a href="/admin/addCita" class="dropdown-item">Añadir Cita</a>
+          {{else if user.Id_Paciente}}
+          <a href="/paciente/getCitas/{{user.Id_Paciente}}" class="dropdown-item">Lista Cita</a>
+          {{else}}
+          <a href="/doctor/getCitas/{{user.Id_Doctor}}" class="dropdown-item">Lista Cita</a>
+          <a href="/doctor/addCita/{{user.Id_Doctor}}" class="dropdown-item">Añadir Cita</a>
+          {{/if}}
+        </div>
+      </div>
+      <div class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="color: white;">Recetas</a>
+        <div class="dropdown-menu rounded-0 rounded-bottom m-0" style=" background-color: #e9ecef;">
+          {{#if user.Id_Administrador}}
+          <a href="/admin/getRecetas" class="dropdown-item">Lista Receta </a>
+          <a href="/admin/addReceta" class="dropdown-item">Añadir Receta</a>
+          {{else if user.Id_Paciente}}
+          <a href="/paciente/getRecetas/{{user.Id_Paciente}}" class="dropdown-item">Lista Receta </a>
+          {{else}}
+          <a href="/doctor/getRecetas/{{user.Id_Doctor}}" class="dropdown-item">Lista Receta </a>
+          <a href="/doctor/addReceta/{{user.Id_Doctor}}" class="dropdown-item">Añadir Receta</a>
+          {{/if}}
+        </div>
+      </div>
+      {{#if user.Especialidad}}
+      <div class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="color: white;">Pacientes</a>
+        <div class="dropdown-menu rounded-0 rounded-bottom m-0" style=" background-color: #e9ecef;">
+          <a href="/doctor/getPacientes/{{user.Id_Doctor}}" class="dropdown-item">Lista Pacientes</a>
+          <a href="/doctor/addPaciente/{{user.Id_Doctor}}" class="dropdown-item">Añadir Pacientes</a>
+        </div>
+      </div>
+      {{/if}}
+      {{#if user.Id_Administrador}}
+      <div class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="color: white;">Doctores</a>
+        <div class="dropdown-menu rounded-0 rounded-bottom m-0" style=" background-color: #e9ecef;">
+          <a href="/admin/getDoctors" class="dropdown-item">Lista Doctores</a>
+          <a href="/admin/addDoctor" class="dropdown-item">Añadir Doctores</a>
+        </div>
+      </div>
+      <div class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="color: white;">Pacientes</a>
+        <div class="dropdown-menu rounded-0 rounded-bottom m-0" style=" background-color: #e9ecef;">
+          <a href="/admin/getPacientes" class="dropdown-item">Lista Pacientes</a>
+          <a href="/admin/addPaciente" class="dropdown-item">Añadir Pacientes</a>
+        </div>
+      </div>
+      <div class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="color: white;">Habitaciones</a>
+        <div class="dropdown-menu rounded-0 rounded-bottom m-0" style=" background-color: #e9ecef;">
+          <a href="/admin/getHabitaciones" class="dropdown-item">Lista Habitaciones</a>
+          <a href="/admin/addHabitacion" class="dropdown-item">Añadir Habitacion</a>
+        </div>
+      </div>
+      {{/if}}
+      {{/if}}
+      {{#if user}}
+      <div class="dropdown" style="margin-left: auto; margin-right: auto; width: 100%;">
+        <button class="btn btn-outline-success dropdown-toggle mt-3" type="button" data-bs-toggle="dropdown"
+          aria-expanded="false" style="width: 100%;">
+          Menu Usuario
+        </button>
+        <ul class="dropdown-menu">
+          {{#if user.Id_Administrador}}
+          <li><a class="dropdown-item" href="/admin/dashboard"><i class="fas fa-columns"></i> Panel</a></li>
+          {{else if user.Especialidad}}
+          <li><a class="dropdown-item" href="/doctor/{{user.Id_Doctor}}"><i class="fas fa-columns"></i> Panel</a></li>
+          {{else if user.Domicilio}}
+          <li><a class="dropdown-item" href="/paciente/{{user.Id_Paciente}}"><i class="fas fa-columns"></i> Panel</a></li>
+          {{/if}}
+          <li><a class="dropdown-item" href="/logout"><i class="fas fa-sign-out-alt"></i> Cerrar Sesion</a></li>
+        </ul>
+      </div>
+      {{else}}
+      <div class="dropdown mt-3" style="margin-left: auto; margin-right: auto; width: 100%;">
+        <button class="btn btn-outline-info dropdown-toggle" type="button" data-bs-toggle="dropdown"
+          aria-expanded="false" style="width: 100%;">
+          <i class="fas fa-sign-in-alt"></i> Iniciar Sesion
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="/login-adm"><i class="fas fa-user-cog"></i> Administrador</a></li>
+          <li><a class="dropdown-item" href="/login"><i class="fas fa-user-md"></i> Doctor</a></li>
+          <li><a class="dropdown-item" href="/login-pac"><i class="fas fa-user"></i> Paciente</a></li>
+        </ul>
+      </div>
+      {{/if}}
+    </div>
+  </div>
+</nav>
+<!-- Navegación Fin-->

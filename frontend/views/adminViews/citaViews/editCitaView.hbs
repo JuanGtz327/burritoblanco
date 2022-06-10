@@ -1,0 +1,60 @@
+<div class="card col-md-6 mx-auto mt-5">
+    <div class="card-header bg-dark">
+        <h3 style="color: white;">Editar Cita</h3>
+    </div>
+    <div class="card-body">
+        {{#if idDoc}}
+            <form action="/doctor/updateCita/{{cita.Id_Cita}}/{{idDoc}}" method="POST">
+        {{else}}
+            <form action="/admin/updateCita/{{cita.Id_Cita}}" method="POST">
+        {{/if}}
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Fecha Anterior</label>
+                <label class="col-sm-9 col-form-label">{{cita.Fecha}}</label>
+            </div>
+            <div class="row mb-3">
+                <label for="inpName" class="col-sm-3 col-form-label">Fecha Nueva</label>
+                <div class="col-sm-9">
+                <input type="datetime-local" class="form-control" name="Fecha" required>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inpCorr" class="col-sm-3 col-form-label">Descripcion</label>
+                <div class="col-sm-9">
+                    <textarea class="form-control" name="Descripcion" required> {{cita.Descripcion}} </textarea>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Doctor</label>
+                <div class="col-sm-3">
+                    {{#if doctor}}
+                        <input type="text" class="form-control" disabled placeholder="{{doctor.Nombre}}">
+                        <input type="hidden" name="idDoc" value="{{doctor.Id_Doctor}}">
+                    {{else}}
+                        <select class="form-select" name="idDoc">
+                            <option selected value="{{cita.Id_Doctor}}">{{myDoctor}} </option>
+                            {{#each doctores}}
+                                <option value="{{Id_Doctor}}"> {{Nombre}} </option>
+                            {{/each}}
+                        </select>
+                    {{/if}}
+                </div>
+                <label class="col-sm-3 col-form-label">Paciente</label>
+                <div class="col-sm-3">
+                    {{#if patient}}
+                        <input type="text" class="form-control" disabled placeholder="{{patient.Nombre}}">
+                        <input type="hidden" name="idPac" value="{{patient.Id_Paciente}}">
+                    {{else}}
+                        <select class="form-select" name="idPac">
+                            <option selected value="{{cita.Id_Paciente}}">{{myPac}}</option>
+                            {{#each pacientes}}
+                                <option value="{{Id_Paciente}}"> {{Nombre}} </option>
+                            {{/each}}
+                        </select>
+                    {{/if}}
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Editar</button>
+        </form>
+    </div>
+</div>

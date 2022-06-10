@@ -1,0 +1,13 @@
+<div class="container" style="margin-top: 50px; border-radius: 15px; background-color: #e9ecef;">
+    <div class="card-body" style="padding: 50px;">
+        <h1 class="display-4">Bienvenido Doctor {{Nombre}}!</h1>
+        <p class="lead">Ahora ya puede dar de alta a sus pacientes y consultar su estado clinico</p>
+        <hr class="my-4">
+        <a class="btn btn-primary btn-lg" href="/doctor/getPacientes/{{Id_Doctor}}" role="button">Consultar Pacientes</a>
+        <a class="btn btn-success btn-lg" href="/doctor/addPaciente/{{Id_Doctor}}">Dar de Alta Paciente</a>
+        <a class="btn btn-warning btn-lg" href="/doctor/getRecetas/{{Id_Doctor}}">Recetas</a>
+        <a class="btn btn-secondary btn-lg" href="/doctor/getCitas/{{Id_Doctor}}">Citas</a>
+        <a class="btn btn-info btn-lg" href="/doctor/perfil/{{Id_Doctor}}">Mi Perfil</a>
+        <a class="btn btn-danger btn-lg" href="/logout">Cerrar Sesion</a>
+    </div>
+</div>

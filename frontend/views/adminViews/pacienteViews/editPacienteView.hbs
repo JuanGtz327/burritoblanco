@@ -1,0 +1,83 @@
+<div class="card col-md-6 mx-auto mt-5">
+    <div class="card-header bg-dark">
+        <h3 style="color: white;">Editar Paciente</h3>
+    </div>
+    <div class="card-body">
+        {{#if idDoc}}
+            <form action="/doctor/updatePaciente/{{paciente.Id_Paciente}}/{{idDoc}}" method="POST">
+        {{else}}
+            <form action="/admin/updatePaciente/{{paciente.Id_Paciente}}" method="POST">
+        {{/if}}
+            <div class="row mb-3">
+                <label for="inpName" class="col-sm-3 col-form-label">Nombre</label>
+                <div class="col-sm-9">
+                <input type="text" class="form-control" name="Nombre" value="{{paciente.Nombre}}">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inpAppeP" class="col-sm-3 col-form-label">Apellido 1</label>
+                <div class="col-sm-9">
+                <input type="text" class="form-control" name="ApellidoP" value="{{paciente.ApellidoP}}">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inpAppeM" class="col-sm-3 col-form-label">Apellido 2</label>
+                <div class="col-sm-9">
+                <input type="text" class="form-control" name="ApellidoM" value="{{paciente.ApellidoM}}">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inpEdad" class="col-sm-3 col-form-label">Edad</label>
+                <div class="col-sm-2">
+                    <input type="number" class="form-control" name="Edad" value="{{paciente.Edad}}">
+                </div>
+                <label class="col-sm-2 col-form-label">Sexo</label>
+                <div class="col-sm-5">
+                    <select class="form-select" name="Genero">
+                        <option selected> {{paciente.Genero}} </option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Femenino">Femenino</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inpCorr" class="col-sm-3 col-form-label">Correo</label>
+                <div class="col-sm-9">
+                <input type="email" class="form-control" id="inpCorr" name="Correo" value="{{paciente.Correo}}" pattern="[a-zA-Z0-9!#$%&'*_+-]([\.]?[a-zA-Z0-9!#$%&'*_+-])+@[a-zA-Z0-9]([^@&%$\/()=?¿!.,:;]|\d)+[a-zA-Z0-9][\.][a-zA-Z]{2,4}([\.][a-zA-Z]{2})?">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inpCorr" class="col-sm-3 col-form-label">Domicilio</label>
+                <div class="col-sm-9">
+                    <textarea class="form-control" name="Domicilio">{{paciente.Domicilio}}</textarea>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">IdDoctor</label>
+                <div class="col-sm-3">
+                        {{#if doctor}}
+                            <input type="text" class="form-control" disabled placeholder="{{doctor.Nombre}}">
+                            <input type="hidden" name="idDoc" value="{{doctor.Id_Doctor}}">
+                        {{else}}
+                            <select class="form-select" name="idDoc">
+                                <option selected value="{{paciente.Id_Doctor}}">{{myDoctor}}</option>
+                                {{#each doctores}}
+                                    <option value="{{Id_Doctor}}"> {{Nombre}} </option>
+                                {{/each}}
+                            </select>
+                        {{/if}}
+                </div>
+                <label class="col-sm-3 col-form-label">IdHabitacion</label>
+                <div class="col-sm-3">
+                    <select class="form-select" name="idHab">
+                        <option selected value="{{paciente.Id_Habitacion}}">{{myHab}}</option>
+                        {{#each habitaciones}}
+                            <option value="{{Id_Habitacion}}"> {{Habitacion}} </option>
+                        {{/each}}
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Editar</button>
+        </form>
+    </div>
+</div>

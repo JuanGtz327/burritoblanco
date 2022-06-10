@@ -1,0 +1,77 @@
+<div class="container">
+    <div class="row">
+        {{#each citas}}
+        <div class="col-md-4">
+            <div class="card mt-4">
+                <div class="card-header">
+                    <i class="far fa-calendar-check"></i> Cita Id#{{Id_Cita}}
+                </div>
+                <div class="card-body">
+                    {{#if ../idDoc}}
+                    <h4>Paciente: {{Nombre}}</h4>
+                    {{else if ../idPac}}
+                    <h4>Doctor: {{nombre}}</h4>
+                    {{else}}
+                    <h4>Doctor: {{nombre}}</h4>
+                    <h4>Paciente: {{Nombre}}</h4>
+                    {{/if}}
+                    <hr>
+                    <p class="card-text">
+                    <h5>Fecha: {{Fecha}}</h5>
+                    <h6> Detalles: {{Descripcion}}</h6>
+                    </p>
+                    <hr>
+                    <div style="display: flex;">
+                        {{#if ../idDoc}}
+                        <form action="/doctor/deleteCita/{{Id_Cita}}/{{../idDoc}}" method="POST">
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                        </form>
+                        <form action="/doctor/updateCita/{{Id_Cita}}/{{../idDoc}}" method="GET">
+                            <button type="submit" class="btn btn-warning" style="margin-left: 15px;">Editar</button>
+                        </form>
+                        {{else if ../idPac}}
+
+                        {{else}}
+                        <form action="/admin/deleteCita/{{Id_Cita}}" method="POST">
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                        </form>
+                        <form action="/admin/updateCita/{{Id_Cita}}" method="GET">
+                            <button type="submit" class="btn btn-warning" style="margin-left: 15px;">Editar</button>
+                        </form>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{else}}
+        <div class="card mt-5">
+            <div class="card-body">
+                <div class="row">
+                    {{#if idDoc}}
+                    <div class="col-md-9">
+                        <h1 class="card-title"><i class="far fa-calendar-check"></i> No hay citas agendadas</h1>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="/doctor/addCita/{{idDoc}}" class="btn btn-lg btn-success" style="width: 100%;">Añadir
+                            nueva cita</a>
+                    </div>
+                    {{else if idPac}}
+                    <div class="col-md-12">
+                        <h1 class="card-title" style="text-align: center;"><i class="far fa-calendar-check"></i> No hay
+                            citas agendadas por su doctor</h1>
+                    </div>
+                    {{else}}
+                    <div class="col-md-9">
+                        <h1 class="card-title"><i class="far fa-calendar-check"></i> No hay citas agendadas</h1>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="/admin/addCita" class="btn btn-lg btn-success" style="width: 100%;">Añadir nueva
+                            cita</a>
+                    </div>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>

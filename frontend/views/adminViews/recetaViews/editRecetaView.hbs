@@ -1,0 +1,36 @@
+<div class="card col-md-6 mx-auto mt-5">
+    <div class="card-header bg-dark">
+        <h3 style="color: white;">Editar Receta</h3>
+    </div>
+    <div class="card-body">
+        {{#if idDoc}}
+            <form action="/doctor/updateReceta/{{receta.Id_Receta}}/{{idDoc}}" method="POST">
+        {{else}}
+            <form action="/admin/updateReceta/{{receta.Id_Receta}}" method="POST">
+        {{/if}}
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">IdCita</label>
+                <div class="col-sm-9">
+                    {{#if cita}}
+                        <input type="text" class="form-control" disabled placeholder="{{cita.Id_Cita}}">
+                        <input type="hidden" name="idCita" value="{{cita.Id_Cita}}">
+                    {{else}}
+                        <select class="form-select" name="idCita">
+                            <option value="{{receta.Id_Cita}}">{{receta.Id_Cita}}</option>
+                            {{#each citas}}
+                                <option value="{{Id_Cita}}"> {{Id_Cita}} </option>
+                            {{/each}}
+                        </select>
+                    {{/if}}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inpCorr" class="col-sm-3 col-form-label">Descripcion</label>
+                <div class="col-sm-9">
+                    <textarea class="form-control" name="Descripcion" required>{{receta.Descripcion}}</textarea>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Editar</button>
+        </form>
+    </div>
+</div>

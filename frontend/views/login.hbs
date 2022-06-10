@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="col-md-5 mx-auto mt-5">
+    <div class="card">
+      <div class="card-header text-center bg-dark">
+        <h3 style="color: white;">Iniciar Sesion Doctor</h3>
+      </div>
+      <div class="card-body">
+        <form action="/login" method="POST">
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" name="Correo" required maxlength="50" pattern="[a-zA-Z0-9!#$%&'*_+-]([\.]?[a-zA-Z0-9!#$%&'*_+-])+@[a-zA-Z0-9]([^@&%$\/()=?¿!.,:;]|\d)+[a-zA-Z0-9][\.][a-zA-Z]{2,4}([\.][a-zA-Z]{2})?">
+            <label>Correo</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="password" class="form-control" name="Password" required maxlength="30" autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Mayusculas, Numeros, Longitud 8 caracteres">
+            <label>Contraseña</label>
+          </div>
+      </div>
+      <div class="card-footer">
+        <div class="d-grid">
+          <button class="btn btn-info" type="submit">Iniciar Sesion</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

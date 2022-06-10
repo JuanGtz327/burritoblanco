@@ -1,0 +1,46 @@
+<div class="card col-md-5 mx-auto mt-5">
+    <div class="card-header bg-dark">
+        <h3 style="color: white;">Editar Doctor</h3>
+    </div>
+    <div class="card-body">
+        <form action="/admin/updateDoctor/{{Id_Doctor}}" method="POST">
+            <div class="row mb-3">
+                <label for="inpName" class="col-sm-3 col-form-label">Nombre</label>
+                <div class="col-sm-9">
+                <input type="text" class="form-control" id="inpName" name="Nombre" value="{{Nombre}}">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inpAppeM" class="col-sm-3 col-form-label">Apellido 1</label>
+                <div class="col-sm-9">
+                <input type="text" class="form-control" id="inpAppeM" name="ApellidoM" value="{{ApellidoM}}">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inpAppeP" class="col-sm-3 col-form-label">Apellido 2</label>
+                <div class="col-sm-9">
+                <input type="text" class="form-control" id="inpAppeP" name="ApellidoP" value="{{ApellidoP}}">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inpEsp" class="col-sm-3 col-form-label">Especialidad</label>
+                <div class="col-sm-9">
+                <input type="text" class="form-control" id="inpEsp" name="Especialidad" value="{{Especialidad}}">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inpCons" class="col-sm-3 col-form-label">Consultorio</label>
+                <div class="col-sm-9">
+                <input type="number" class="form-control" id="inpCons" name="Consultorio" value="{{Consultorio}}">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inpCorr" class="col-sm-3 col-form-label">Correo</label>
+                <div class="col-sm-9">
+                <input type="email" class="form-control" id="inpCorr" name="Correo" value="{{Correo}}" pattern="[a-zA-Z0-9!#$%&'*_+-]([\.]?[a-zA-Z0-9!#$%&'*_+-])+@[a-zA-Z0-9]([^@&%$\/()=?¿!.,:;]|\d)+[a-zA-Z0-9][\.][a-zA-Z]{2,4}([\.][a-zA-Z]{2})?">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Editar</button>
+        </form>
+    </div>
+</div>

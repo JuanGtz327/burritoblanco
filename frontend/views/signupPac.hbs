@@ -1,0 +1,104 @@
+<div class="container">
+  <div class="col-md-5 mx-auto mt-5 mb-5">
+    <div class="card">
+      <div class="card-header text-center bg-dark">
+        <h3 style="color: white;">Registrar Paciente</h3>
+      </div>
+      <div class="card-body">
+        {{#if idDoc}}
+            <form action="/doctor/addPaciente/{{idDoc}}" method="POST">
+        {{else}}
+            <form action="/admin/addPaciente" method="POST">
+        {{/if}}
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" name="Nombre" value="{{Nombre}}" required maxlength="20" autocomplete="off" pattern="[A-Za-z ]+">
+            <label>Nombre</label>
+          </div>
+          <div class="row g-2 mb-3">
+            <div class="col-md">
+                <div class="form-floating">
+                    <input type="text" class="form-control" name="ApellidoP" value="{{ApellidoP}}" required maxlength="20" autocomplete="off" pattern="[A-Za-z ]+">
+                    <label>Apellido Paterno</label>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="form-floating">
+                    <input type="text" class="form-control" name="ApellidoM" value="{{ApellidoM}}" required maxlength="20" autocomplete="off" pattern="[A-Za-z ]+">
+                    <label>Apellido Materno</label>
+                </div>
+            </div>
+          </div>
+          <div class="row g-2 mb-3">
+            <div class="col-md">
+              <div class="form-floating">
+                <input type="number" class="form-control"name="Edad" value="{{Edad}}" min="5" max="90">
+                <label>Edad</label>
+              </div>
+            </div>
+            <div class="col-md">
+              <div class="form-floating">
+                  <select class="form-select" name="Genero">
+                    <option value="Masculino">Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                  </select>
+                  <label>Genero</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-floating mb-3">
+            <textarea class="form-control" name="Domicilio"></textarea>
+            <label>Domicilio</label>
+          </div>
+          <div class="row g-2 mb-3">
+            <div class="col-md">
+                <div class="form-floating">
+                    {{#if doctor}}
+                        <input type="text" class="form-control" disabled value="{{doctor.Nombre}}">
+                        <input type="hidden" name="idDoc" value="{{doctor.Id_Doctor}}">
+                    {{else}}
+                        <select class="form-select" name="idDoc">
+                            {{#each doctores}}
+                                <option value="{{Id_Doctor}}"> {{Nombre}} </option>
+                            {{/each}}
+                        </select>
+                    {{/if}}
+                    <label>Doctor</label>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="form-floating">
+                    <select class="form-select" name="idHab">
+                        {{#each habitaciones}}
+                            <option value="{{Id_Habitacion}}"> {{Habitacion}} </option>
+                        {{/each}}
+                    </select>
+                    <label>Habitacion</label>
+                </div>
+            </div>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control"name="Correo" value="{{Correo}}" required maxlength="50" pattern="[a-zA-Z0-9!#$%&'*_+-]([\.]?[a-zA-Z0-9!#$%&'*_+-])+@[a-zA-Z0-9]([^@&%$\/()=?¿!.,:;]|\d)+[a-zA-Z0-9][\.][a-zA-Z]{2,4}([\.][a-zA-Z]{2})?">
+            <label>Correo</label>
+          </div>
+          <div class="row g-2 mb-3">
+            <div class="col-md-6">
+                <div class="form-floating">
+                    <input type="password" class="form-control" name="Password" required maxlength="30" autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Mayusculas, Numeros, Longitud 8 caracteres">
+                    <label>Contraseña</label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-floating">
+                    <input type="password" class="form-control" name="Password2" required maxlength="30" autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Mayusculas, Numeros, Longitud 8 caracteres">
+                    <label>Repetir Contraseña</label>
+                </div>
+            </div>
+          </div>
+          <div class="d-grid">
+            <button class="btn btn-info" type="submit">Añadir Paciente</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

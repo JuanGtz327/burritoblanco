@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="row">
+        {{#each doctors}}
+        <div class="col-md-4">
+            <div class="card mt-3">
+                <div class="card-header">
+                    <i class="fas fa-user-md"></i> Dr. {{Nombre}}
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Dr. {{Nombre}} {{ApellidoP}} {{ApellidoM}}</h5>
+                    <p class="card-text">
+                        <h6>Doctor especializado en la rama de {{Especialidad}}. Atencion personal en el consultorio
+                        {{Consultorio}}</h6>
+                    </p>
+                    <hr>
+                    <div style="display: flex;">
+                        <form action="/admin/deleteDoctor/{{Id_Doctor}}" method="POST" style="width: 50%;">
+                            <button type="submit" class="btn btn-danger" style="width: 95%;">Eliminar</button>
+                        </form>
+                        <form action="/admin/updateDoctor/{{Id_Doctor}}" method="GET"
+                            style="text-align: right; width: 50%;">
+                            <button type="submit" class="btn btn-warning" style="width: 95%;">Editar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{else}}
+        <div class="card mt-5">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-9">
+                        <h1 class="card-title"><i class="fas fa-user-md"></i> No hay doctores registrados</h1>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="/admin/addDoctor" class="btn btn-lg btn-success" style="width: 100%;">Añadir Doctor</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>

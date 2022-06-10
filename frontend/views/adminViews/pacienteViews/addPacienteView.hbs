@@ -1,0 +1,80 @@
+<div class="card col-md-6 mx-auto mt-5">
+    <div class="card-header bg-dark">
+        <h3 style="color: white;">Agregar Paciente</h3>
+    </div>
+    <div class="card-body">
+        {{#if idDoc}}
+            <form action="/doctor/addPaciente/{{idDoc}}" method="POST">
+        {{else}}
+            <form action="/admin/addPaciente" method="POST">
+        {{/if}}
+            <div class="row mb-3">
+                <label for="inpName" class="col-sm-3 col-form-label">Nombre</label>
+                <div class="col-sm-9">
+                <input type="text" class="form-control" name="Nombre">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inpAppeP" class="col-sm-3 col-form-label">Apellido 1</label>
+                <div class="col-sm-9">
+                <input type="text" class="form-control" name="ApellidoP">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inpAppeM" class="col-sm-3 col-form-label">Apellido 2</label>
+                <div class="col-sm-9">
+                <input type="text" class="form-control" name="ApellidoM">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inpEdad" class="col-sm-3 col-form-label">Edad</label>
+                <div class="col-sm-2">
+                    <input type="number" class="form-control" name="Edad">
+                </div>
+                <label class="col-sm-2 col-form-label">Sexo</label>
+                <div class="col-sm-5">
+                    <select class="form-select" name="Genero">
+                        <option value="Masculino">Masculino</option>
+                        <option value="Femenino">Femenino</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inpCorr" class="col-sm-3 col-form-label">Correo</label>
+                <div class="col-sm-9">
+                <input type="email" class="form-control" id="inpCorr" name="Correo">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inpCorr" class="col-sm-3 col-form-label">Domicilio</label>
+                <div class="col-sm-9">
+                    <textarea class="form-control" name="Domicilio"></textarea>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Doctor</label>
+                <div class="col-sm-3">
+                    {{#if doctor}}
+                        <input type="text" class="form-control" disabled placeholder="{{doctor.Nombre}}">
+                        <input type="hidden" name="idDoc" value="{{doctor.Id_Doctor}}">
+                    {{else}}
+                        <select class="form-select" name="idDoc">
+                            {{#each doctores}}
+                                <option value="{{Id_Doctor}}"> {{Nombre}} </option>
+                            {{/each}}
+                        </select>
+                    {{/if}}
+                </div>
+                <label class="col-sm-3 col-form-label">IdHabitacion</label>
+                <div class="col-sm-3">
+                    <select class="form-select" name="idHab">
+                        {{#each habitaciones}}
+                            <option value="{{Id_Habitacion}}"> {{Habitacion}} </option>
+                        {{/each}}
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Agregar</button>
+        </form>
+    </div>
+</div>
